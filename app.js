@@ -393,7 +393,12 @@ app.post("/sub",function(req,res){
   res.redirect("/");
 })
 
-app.listen(3000,function(){
+let port=process.env.PORT;
+if(port==null || port=="")
+{
+  port=3000;
+}
+app.listen(port,function(){
   console.log("Server running successfully");
 });
 // key : 8f9ffcd34b57d01b1cc8abd80a9f6269-us7
