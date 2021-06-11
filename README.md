@@ -1,4 +1,5 @@
-# PortFolio_Website
-Complete Portfolio Website with Bootstrap - HTML/CSS In this project, we are going to learn and build how to create a complete portfolio website with bootstrap using HTML and CSS. We will understand everything from scratch. 
+# A Fitness&Nutrition_Website
+Front-End made with Bootstrap - HTML/CSS. Backend with Nodejs. Used MongoDB as Database. In this project, You can enjoy some custom default workouts and food ideas, and you can also create your own workouts and food lists with specific Titles. And all of the things that "YOU" create will be accessible later also when you type the same name again in the text box.
 
-## To execute this project just open index.html file in the browser.
+**There is a glitch in Motivation section, So resolve that issue just click on ALL button again. 
+## To open this project just click on https://hidden-bayou-79572.herokuapp.com/ .
