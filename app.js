@@ -3,6 +3,8 @@ const bodyParser=require('body-parser');
 const request = require("request");
 const https=require("https");
 const jalert = require('js-alert');
+const mongoose = require('mongoose');
+const _=require("lodash")
 
 const app=express();
 
@@ -12,6 +14,13 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 app.use(express.static("public"));
+
+mongoose.connect("mongodb+srv://bhaskar942:bhaskar0002@cluster0.wqkwh.mongodb.net/drillTimeDB?retryWrites=true&w=majority", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useFindAndModify: false
+});
+
 
 var l=["Warmup","Streching"];
 var back=["Lat Pull Down - 3*12","One Arm - 6*10","Reverse Grip Pull Down - 3*12", "Barbell Row - 6*10", "Close Grip Pulldown - 3*12","Rack Pulls - 6*10"];
@@ -23,6 +32,38 @@ var f=["Get the ingridients","Start Cooking"];
 var breakfast=["Eggs","Greek Yogurt","Pancakes","Poha","Upma","Rava Dosa","Oat Meal"];
 var carbs=["Potatoes","Sweet Potatoes","Bread","Rice"];
 var proteins=["Legumes","Eggs","Whey Protein","Cottage Cheese","Chickpeas","Chicken","Fish"];
+
+const itemsSchema = {
+  name: String
+} //schema making
+const ItemE = mongoose.model("ItemE", itemsSchema); //model making
+const item1 = new ItemE({
+  name: "Warmup"
+}); //document 1 making
+const item2 = new ItemE({
+  name: "Stretching"
+}); //document 2 making
+ //document 3 making
+const defaultItemsE = [item1,item2]; //document array making
+
+const listSchema={
+  name: String,
+  items: [itemsSchema]
+};
+const ListE=mongoose.model("ListE",listSchema);
+
+const ItemF = mongoose.model("ItemF", itemsSchema); //model making
+const item3 = new ItemF({
+  name: "Get the ingridients"
+}); //document 1 making
+const item4 = new ItemF({
+  name: "Start Cooking"
+}); //document 2 making
+ //document 3 making
+const defaultItemsF = [item3,item4]; //document array making
+
+const ListF=mongoose.model("ListF",listSchema);
+
 app.get("/",function(req,res){
   res.render("index");
 });
@@ -37,6 +78,8 @@ app.get("/preFood",function(req,res){
 app.post("/defaults",function(req,res){
   // console.log(req.body);
   const workoutName=req.body.tow;
+
+
   if(workoutName==="back"){
     res.render("defaults",{
       typeOfWorkout: workoutName,
@@ -93,68 +136,215 @@ app.post("/defaultsFood",function(req,res){
       itemsArray: proteins
     });
   }
-  // var f1=["Get the ingridients","Start Cooking"];
-  // res.render("defaultsFood",{
-  //   typeOfFood: foodName,
-  //   itemsArray: f1
-  // });
 });
 app.post("/list",function(req,res){
   // console.log(req.body);
   // const exerciseName = req.body.newExercise;
-  const workoutName = req.body.tow;//type of workout
+  const workoutName = _.capitalize(req.body.tow);//type of workout
   // l.push(exerciseName);
-  var l1=["Warmup","Streching"];
-  res.render("list",{
-    typeOfWorkout: workoutName,
-    itemsArray: l1
+  // var l1=["Warmup","Streching"];
+
+
+  ListE.findOne({name: workoutName},function(err,foundList){
+    if(err){
+      console.log(err);
+    }
+    else{
+      // console.log(foundList);
+      if(!foundList){
+        console.log("Doesn't Exists!");//so create a new list
+        const newWorkout=new ListE({
+          name: workoutName,
+          items: defaultItemsE
+        });
+        // console.log("new item created");
+        // const redTo="/"+customListName;
+        newWorkout.save();
+        // console.log("and saved");
+        res.render("list",{
+          typeOfWorkout: newWorkout.name,
+          itemsArray: newWorkout.items
+        });
+      }
+      else{
+        console.log("Exists!");//show an existing list
+        res.render("list",{
+          typeOfWorkout: foundList.name,
+          itemsArray: foundList.items
+        });
+      }
+    }
+
   });
 });
+
 app.post("/foodList",function(req,res){
   // console.log(req.body);
   // const foodName = req.body.newExercise;
-  const foodName = req.body.tof;//type of workout
+  // const foodName = req.body.tof;//type of workout
+  // // l.push(exerciseName);
+  // var f1=["Get the ingridients","Start Cooking"];
+  // res.render("foodList",{
+  //   typeOfFood: foodName,
+  //   itemsArray: f1
+  // });
+  const foodName = _.capitalize(req.body.tof);//type of workout
   // l.push(exerciseName);
-  var f1=["Get the ingridients","Start Cooking"];
-  res.render("foodList",{
-    typeOfFood: foodName,
-    itemsArray: f1
+  // var l1=["Warmup","Streching"];
+
+
+  ListF.findOne({name: foodName},function(err,foundList){
+    if(err){
+      console.log(err);
+    }
+    else{
+      // console.log(foundList);
+      if(!foundList){
+        console.log("Doesn't Exists!");//so create a new list
+        const newFood=new ListF({
+          name: foodName,
+          items: defaultItemsF
+        });
+        // console.log("new item created");
+        // const redTo="/"+customListName;
+        newFood.save();
+        // console.log("and saved");
+        res.render("foodList",{
+          typeOfFood: newFood.name,
+          itemsArray: newFood.items
+        });
+      }
+      else{
+        console.log("Exists!");//show an existing list
+        res.render("foodList",{
+          typeOfFood: foundList.name,
+          itemsArray: foundList.items
+        });
+      }
+    }
+
   });
 });
+
 app.post("/createNewExercise",function(req,res){
-  console.log(req.body);
+
+  // console.log(req.body);
+
   const exerciseName = req.body.newExercise;
-  const workoutName = req.body.tow;//type of workout
-  l.push(exerciseName);
-  res.render("list",{
-    typeOfWorkout: workoutName,
-    itemsArray: l
+  const workoutName = _.capitalize(req.body.tow);//type of workout
+  const newItemDoc= new ItemE({
+    name: exerciseName
   });
+
+    ListE.findOne({name: workoutName},function(err,foundList){
+      if(err){
+        console.log(err);
+      }
+      else{
+        foundList.items.push(newItemDoc);
+        foundList.save();
+        res.render("list",{
+          typeOfWorkout: foundList.name,
+          itemsArray: foundList.items
+        });
+      }
+    });
+
 });
+
 app.post("/createNewFood",function(req,res){
   // console.log(req.body);
+  // const newFoodName = req.body.newFood;
+  // const foodName = req.body.tof;//type of workout
+  // f.push(newFoodName);
+  // res.render("foodList",{
+  //   typeOfFood: foodName,
+  //   itemsArray: f
+  // });
   const newFoodName = req.body.newFood;
-  const foodName = req.body.tof;//type of workout
-  f.push(newFoodName);
-  res.render("foodList",{
-    typeOfFood: foodName,
-    itemsArray: f
+  const foodName = _.capitalize(req.body.tof);//type of workout
+  const newItemDoc= new ItemF({
+    name: newFoodName
   });
+
+    ListF.findOne({name: foodName},function(err,foundList){
+      if(err){
+        console.log(err);
+      }
+      else{
+        foundList.items.push(newItemDoc);
+        foundList.save();
+        res.render("foodList",{
+          typeOfFood: foundList.name,
+          itemsArray: foundList.items
+        });
+      }
+    });
 });
 app.post("/delete",function(req,res){
-  const workoutName = req.body.tow;//type of workout
-  l=["Warmup","Streching"];
-  res.render("list",{
-    typeOfWorkout: workoutName,
-    itemsArray: l
+  const workoutName = _.capitalize(req.body.tow);//type of workout
+  // l=["Warmup","Streching"];
+  // res.render("list",{
+  //   typeOfWorkout: workoutName,
+  //   itemsArray: l
+  // });
+  ListE.findOneAndUpdate({name: workoutName},{items: defaultItemsE},function(err,foundList){
+    if(err){
+      console.log(err);
+    }
+    else{
+      console.log("succesfully cleared list");
+    }
+  });
+  ListE.findOne({name: workoutName},function(err,foundList){
+    if(err){
+      console.log(err);
+    }
+    else{
+      // console.log(foundList);
+        // console.log("Exists!");//show an existing list
+        res.render("list",{
+          typeOfWorkout: foundList.name,
+          itemsArray: foundList.items
+        });
+    }
   });
 });
 app.post("/deleteFoodList",function(req,res){
-  const foodName = req.body.tof;//type of workout
-  f=["Get the ingridients","Start Cooking"];
-  res.render("foodList",{
-    typeOfFood: foodName,
-    itemsArray: f
+
+  // const foodName = req.body.tof;//type of workout
+  // f=["Get the ingridients","Start Cooking"];
+  // res.render("foodList",{
+  //   typeOfFood: foodName,
+  //   itemsArray: f
+  // });
+
+  const foodName = _.capitalize(req.body.tof);//type of workout
+  // l=["Warmup","Streching"];
+  // res.render("list",{
+  //   typeOfWorkout: workoutName,
+  //   itemsArray: l
+  // });
+  ListF.findOneAndUpdate({name: foodName},{items: defaultItemsF},function(err,foundList){
+    if(err){
+      console.log(err);
+    }
+    else{
+      console.log("succesfully cleared list");
+    }
+  });
+  ListF.findOne({name: foodName},function(err,foundList){
+    if(err){
+      console.log(err);
+    }
+    else{
+      // console.log(foundList);
+        // console.log("Exists!");//show an existing list
+        res.render("foodList",{
+          typeOfFood: foundList.name,
+          itemsArray: foundList.items
+        });
+    }
   });
 });
 
