@@ -1,0 +1,326 @@
+<%-include("header")-%>
+<!--  ======================= Start Header Area ============================== -->
+
+<header class="header_area">
+  <div class="main-menu">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <a class="navbar-brand " href="#"> <img src="img/logo1.png" alt=""> </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <div class="me-auto"></div>
+        <ul class="navbar-nav">
+          <li class="nav-item ">
+            <a class="nav-link" href="#training">Training <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#nutrition">Nutrition</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#motivation">Motivation</a> <!-- maybe a quotes section -->
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#Contact">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<!--  ======================= End Header Area ============================== -->
+
+<!--  ======================= Start Main Area ================================ -->
+<main class="site-main">
+
+
+  <!--  ======================= Start Banner Area =======================  -->
+  <section class="site-banner" id="training">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 col-md-12 site-title">
+          <h3 class="title-text">Get Aesthetically
+            Athletic Today</h3>
+          <!-- <h3 class="">Athletic</h3> -->
+          <!-- <h1 class="title-text text-uppercase">I am Akshay</h1> -->
+          <h4 class="punch-line">Fitness is not one-size-fits-all. Make your own custom workouts or choose from here.</h4>
+          <div class="site-buttons">
+            <div class="d-flex flex-row flex-wrap">
+              <form class="" action="/prelist" method="">
+                <input type="button" class="btn button primary-button mr-4" name="" value="Start Now" onclick="this.form.submit()">
+              </form>
+              <!-- <button type="button" class="btn button primary-button mr-4"> <a href="/list" class="top-btn">Start Now</a> </button> -->
+              <!-- <button type="button" class="btn button secondary-button text-uppercase">Create</button> -->
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-12 banner-image">
+          <img src="./img/bg.png" alt="banner-img" class="img-fluid">
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--  ======================= End Banner Area =======================  -->
+
+  <!--  ========================= Nutrition Area ==========================  -->
+
+  <section class="about-area" id ="nutrition">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-6 col-md-12">
+          <div class="about-image">
+            <img src="img/nutri.png" alt="About us" class="img-fluid">
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-12 about-title">
+          <h2 class="text-uppercase pt-5">
+            <!-- <span>The</span> -->
+            <span>Nutrition</span>
+          </h2>
+          <div class="paragraph py-4 w-75">
+            <p class="para">
+              Whether weight loss, muscle gain or overall health improvement, reach your goal eating foodie-grade recipes.
+              Not a one size fits all diet but a nutritional lifestyle tailored to your unique preferences, needs and goals.
+            </p>
+            <p class="para">
+              A nutritional lifestyle designed to help you meet and sustain your goals in a way that diets simply can’t.
+              Others have already started their journey towards greatness. You are only one step away from your own success story.
+              Drill Time Nutrition is a clean eating lifestyle tailored to your unique parameters. Its foodie-grade recipes and meal plans help you reach your goals, whether that be weight loss, muscle gain or overall health improvement
+            </p>
+            <form class="" action="/preFood" method="">
+              <input type="button" class="btn button btn-dark mr-4" name="" value="Start Eating Clean Now" onclick="this.form.submit()">
+            </form>
+            <!-- <button type="button" class="btn button btn-dark mr-4 ">Start Eating Clean Now</button> -->
+          </div>
+          <!-- <button type="button" class="btn button primary-button text-uppercase">Download cv</button> -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!--  ========================= End Nutrition Area ==========================  -->
+
+
+
+  <!--  ======================= Project Area =============================  -->
+
+  <section class="project-area" id="motivation">
+    <div class="container">
+      <div class="project-title ">
+        <h1 class="text-uppercase title-h1">Motivation</h1>
+      </div>
+
+      <div class="button-group">
+        <button type="button" class="active" id="btn1" data-filter="*">All</button>
+        <button type="button" data-filter=".food">Food</button>
+        <button type="button" data-filter=".stories">Stories</button>
+        <button type="button" data-filter=".workouts">Workouts</button>
+        <button type="button" data-filter=".quotes">Quotes</button>
+      </div>
+
+      <div class="row grid">
+        <div class="col-lg-4 col-md-6 col-sm-12 element-item stories">
+          <div class="our-project">
+            <div class="img">
+              <a class="test-popup-link" href="./img/s1.png">
+                <img src="./img/s1.png" alt="portfolio-1" class="img-fluid">
+              </a>
+            </div>
+            <div class="title py-4">
+              <h4 class="text-uppercase">Persistence</h4>
+              <span class="text-secondary">Transformation, Motoivation</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-12 element-item food">
+          <div class="our-project">
+            <div class="img">
+              <a class="test-popup-link" href="./img/f1.jpg">
+                <img src="./img/f1.jpg" alt="portfolio-2" class="img-fluid">
+              </a>
+            </div>
+            <div class="title py-4">
+              <h4 class="text-uppercase">Boiled Veggies</h4>
+              <span class="text-secondary">Food, Motivation</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-12 element-item quotes">
+          <div class="our-project">
+            <div class="img">
+              <a class="test-popup-link" href="./img/q2.jpg">
+                <img src="./img/q2.jpg" alt="portfolio-4" class="img-fluid">
+              </a>
+            </div>
+            <div class="title py-4">
+              <h4 class="text-uppercase">Commitment</h4>
+              <span class="text-secondary">Quotes, Motivation</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-12 element-item workouts">
+          <div class="our-project">
+            <div class="img">
+              <a class="test-popup-link" href="./img/w1.jpg">
+                <img src="./img/w1.jpg" alt="portfolio-6" class="img-fluid">
+              </a>
+            </div>
+            <div class="title py-4">
+              <h4 class="text-uppercase">Strong Back</h4>
+              <span class="text-secondary">Workout, Motivation</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-12 element-item food">
+          <div class="our-project">
+            <div class="img">
+              <a class="test-popup-link" href="./img/f2.jpg">
+                <img src="./img/f2.jpg" alt="portfolio-3" class="img-fluid">
+              </a>
+            </div>
+            <div class="title py-4">
+              <h4 class="text-uppercase">Cereals & Fruits</h4>
+              <span class="text-secondary">Food, Motivation</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-12 element-item quotes">
+          <div class="our-project">
+            <div class="img">
+              <a class="test-popup-link" href="./img/q1.jpg">
+                <img src="./img/q1.jpg" alt="portfolio-5" class="img-fluid">
+              </a>
+            </div>
+            <div class="title py-4">
+              <h4 class="text-uppercase">Trust</h4>
+              <span class="text-secondary">Quotes, Motivation</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 col-sm-12 element-item workouts">
+          <div class="our-project">
+            <div class="img">
+              <a class="test-popup-link" href="./img/w2.jpg">
+                <img src="./img/w2.jpg" alt="portfolio-7" class="img-fluid">
+              </a>
+            </div>
+            <div class="title py-4">
+              <h4 class="text-uppercase">Types</h4>
+              <span class="text-secondary">Workout, Motivation</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-12 element-item workouts">
+          <div class="our-project">
+            <div class="img">
+              <a class="test-popup-link" href="./img/w3.jpg">
+                <img src="./img/w3.jpg" alt="portfolio-8" class="img-fluid">
+              </a>
+            </div>
+            <div class="title py-4">
+              <h4 class="text-uppercase">Hours per Week</h4>
+              <span class="text-secondary">Workout, Motivation</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 col-sm-12 element-item quotes">
+          <div class="our-project">
+            <div class="img">
+              <a class="test-popup-link" href="./img/q3.jpg">
+                <img src="./img/q3.jpg" alt="portfolio-9" class="img-fluid">
+              </a>
+            </div>
+            <div class="title py-4">
+              <h4 class="text-uppercase">Patience</h4>
+              <span class="text-secondary">Quotes, Motivation</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-12 element-item stories">
+          <div class="our-project">
+            <div class="img">
+              <a class="test-popup-link" href="./img/s2.jpg">
+                <img src="./img/s2.jpg" alt="portfolio-1" class="img-fluid">
+              </a>
+            </div>
+            <div class="title py-4">
+              <h4 class="text-uppercase">Hardwork</h4>
+              <span class="text-secondary">Transformation, Motivation</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!--  ======================= End Project Area =============================  -->
+
+  <!--  ====================== Start Services Area =============================  -->
+
+
+
+  <!--  ====================== End Services Area =============================  -->
+
+  <!--  ======================== About Me Area ==============================  -->
+
+  <!--  ======================== End About Me Area ==============================  -->
+
+  <!--  ========================== Subscribe me Area ============================  -->
+  <section class="subscribe-us-area" id="Contact">
+    <div class="container subscribe">
+      <div class="row">
+        <div class="col-lg-12 text-center subscribe-title">
+          <h4 class="text-uppercase">Get Updates on the Go</h4>
+          <p class="para">Subscribe to my mailing list to get latest updates</p>
+        </div>
+      </div>
+      <div class="d-sm-flex justify-content-center">
+        <form  class="w-50" action="/sub" method="post">
+          <div class="row d-flex flex-row flex-wrap">
+            <div class="col input-textbox">
+              <input type="text" name="mail" id="txtemail" class="form-control" placeholder="Email">
+            </div>
+            <div class="col">
+              <div class="btn-submit">
+                <button type="submit" class="btn btn-success float-right">Subscribe</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+  <!--  ========================== End Subscribe me Area ============================  -->
+
+
+</main>
+<!--  ======================= End Main Area ================================ -->
+
+<footer class="footer-area">
+  <div class="container">
+    <div class="">
+      <!-- <div class="site-logo text-center py-4">
+        <a href="#"><img src="./img/logo1.png" alt="logo"></a>
+      </div> -->
+      <div class="social text-center">
+        <h5 class="text-uppercase">Follow me</h5>
+        <a href="https://www.facebook.com/bhaskar.arya.94/"><i class="fab fa-facebook"></i></a>
+        <a href="https://www.instagram.com/mr.bhaskar_arya/"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.behance.net/aryabhaskar"><i class="fab fa-behance"></i></a>
+        <a href="https://www.linkedin.com/in/bhaskar-arya-43693b177/"><i class="fab fa-linkedin"></i></a>
+      </div>
+      <div class="copyrights text-center">
+        <p class="para">
+          This template is made with by a Believer
+          <!-- <a href="#"><span style="color: var(primary-color);">Daily Tuition</span></a> -->
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<%-include("footer")-%>
