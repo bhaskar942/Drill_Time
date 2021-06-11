@@ -14,7 +14,15 @@ app.use(bodyParser.urlencoded({
 app.use(express.static("public"));
 
 var l=["Warmup","Streching"];
+var back=["Lat Pull Down - 3*12","One Arm - 6*10","Reverse Grip Pull Down - 3*12", "Barbell Row - 6*10", "Close Grip Pulldown - 3*12","Rack Pulls - 6*10"];
+var biceps=["Barbel Curl - 6*8","Dumbell Curl - 3*15", "Preacher Curl (close grip) - 3*15","Plate Curls - 3*15"];
+var shoulder=["Barbell Shoulder Press - 4*10","Dumbell Press - 4*10","Front Raise - 4*15","Side Raise - 4*15","Bendover Delt Fly - 4*15","Face Pulls - 3*25","Barbell Shrugs - 8*8"];
+var legs=["Barbell Squats - 8*12","Lunges - 6*12","Leg Extension - 3*33","Leg Curls - 3*33","Leg Press - 6*12-15","Calves - 4*50"];
+var chest=["Chest Press (Barbell) - 4*10","Flat Dumbell Fly - 4*10","Barbell Incline Press - 4*10","Incline Dumbell Fly - 4*10","Peck Deck Fly - 6*12"];
 var f=["Get the ingridients","Start Cooking"];
+var breakfast=["Eggs","Greek Yogurt","Pancakes","Poha","Upma","Rava Dosa","Oat Meal"];
+var carbs=["Potatoes","Sweet Potatoes","Bread","Rice"];
+var proteins=["Legumes","Eggs","Whey Protein","Cottage Cheese","Chickpeas","Chicken","Fish"];
 app.get("/",function(req,res){
   res.render("index");
 });
@@ -29,20 +37,67 @@ app.get("/preFood",function(req,res){
 app.post("/defaults",function(req,res){
   // console.log(req.body);
   const workoutName=req.body.tow;
-  var l1=["Warmup","Streching"];
-  res.render("defaults",{
-    typeOfWorkout: workoutName,
-    itemsArray: l1
-  });
+  if(workoutName==="back"){
+    res.render("defaults",{
+      typeOfWorkout: workoutName,
+      itemsArray: back
+    });
+  }
+  else if(workoutName==="biceps"){
+    res.render("defaults",{
+      typeOfWorkout: workoutName,
+      itemsArray: biceps
+    });
+  }
+  else if(workoutName==="shoulder"){
+    res.render("defaults",{
+      typeOfWorkout: workoutName,
+      itemsArray: shoulder
+    });
+  }
+  else if(workoutName==="legs"){
+    res.render("defaults",{
+      typeOfWorkout: workoutName,
+      itemsArray: legs
+    });
+  }
+  else if(workoutName==="chest"){
+    res.render("defaults",{
+      typeOfWorkout: workoutName,
+      itemsArray: chest
+    });
+  }
+  // res.render("defaults",{
+  //   typeOfWorkout: workoutName,
+  //   itemsArray: l1
+  // });
 });
 app.post("/defaultsFood",function(req,res){
   // console.log(req.body);
   const foodName=req.body.tof;
-  var f1=["Get the ingridients","Start Cooking"];
-  res.render("defaultsFood",{
-    typeOfFood: foodName,
-    itemsArray: f1
-  });
+  if(foodName==="breakfast"){
+    res.render("defaultsFood",{
+      typeOfFood: foodName,
+      itemsArray: breakfast
+    });
+  }
+  else if(foodName==="carbs"){
+    res.render("defaultsFood",{
+      typeOfFood: foodName,
+      itemsArray: carbs
+    });
+  }
+  else if(foodName==="proteins"){
+    res.render("defaultsFood",{
+      typeOfFood: foodName,
+      itemsArray: proteins
+    });
+  }
+  // var f1=["Get the ingridients","Start Cooking"];
+  // res.render("defaultsFood",{
+  //   typeOfFood: foodName,
+  //   itemsArray: f1
+  // });
 });
 app.post("/list",function(req,res){
   // console.log(req.body);
